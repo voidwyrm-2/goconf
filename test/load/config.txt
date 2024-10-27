@@ -1,0 +1,6 @@
+name:string:Jacob Thaumiel;
+age:int: 21;
+
+. since semicolons are used to end fields, use `\;` to escape them
+. and if needed, use `\:` to escape colons
+
