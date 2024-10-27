@@ -35,4 +35,4 @@ func main() {
 }
 ```
 
-All supported Go types can be seen in [goconf.go](./goconf.go)
+A list of supported Go types can be found in [goconf.go](./goconf.go)
