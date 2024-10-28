@@ -1,0 +1,4 @@
+type:int:10;
+gen:int:10;
+game:string:pocket friends\: emblem;
+name:string:flog;

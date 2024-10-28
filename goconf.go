@@ -14,6 +14,7 @@ import (
 )
 
 var validGoTypes = []string{
+	"string",
 	"int",
 	"int32",
 	"int64",
@@ -70,9 +71,10 @@ func FromMap(m map[string]any) (string, error) {
 		if !slices.Contains(validGoTypes, reflect.TypeOf(v).Kind().String()) {
 			return "", fmt.Errorf("invalid type for goconf conversion '%s'(attached to key '%s')", reflect.TypeOf(v).Kind().String(), k)
 		} else if sv, ok := v.(string); ok {
-			v = strings.ReplaceAll(sv, "\n", "\\n")
+			v = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(sv, "\n", "\\n"), ":", "\\:"), ";", "\\;")
 		}
-		fields = append(fields, fmt.Sprintf("%s:%s:%s;", k, reflect.TypeOf(v).Kind().String(), v))
+		fmt.Printf("'%s', '%v'\n", k, v)
+		fields = append(fields, fmt.Sprintf("%s:%s:%v;", k, reflect.TypeOf(v).Kind().String(), v))
 	}
 
 	return strings.Join(fields, "\n"), nil
