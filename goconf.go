@@ -73,7 +73,6 @@ func FromMap(m map[string]any) (string, error) {
 		} else if sv, ok := v.(string); ok {
 			v = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(sv, "\n", "\\n"), ":", "\\:"), ";", "\\;")
 		}
-		fmt.Printf("'%s', '%v'\n", k, v)
 		fields = append(fields, fmt.Sprintf("%s:%s:%v;", k, reflect.TypeOf(v).Kind().String(), v))
 	}
 
